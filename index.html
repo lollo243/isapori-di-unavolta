@@ -6,9 +6,10 @@
     <title>I Sapori di Una Volta - Prodotti Tipici Fossano</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
+        /* RESET E BASE - ADATTIVO AL 100% */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
-     
+        body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; }
+
         .container { 
             width: 100%; 
             max-width: 1200px; 
@@ -24,384 +25,150 @@
         .hero-content { max-width: clamp(500px, 85vw, 800px); }
         .prodotti { padding: 0 clamp(0.5rem, 2vw, 1rem); }
 
-        /* HEADER */
-        .header-neutro { 
-            position: fixed; top: 0; width: 100%; background: #ffffff; border-bottom: 1px solid #e9e9e9; z-index: 100; transition: all 0.3s; 
-        }
-        .navbar { padding: clamp(0.8rem, 2vw, 1rem) 0; }
-
-        /* =============================================
-           FIX MOBILE NAVBAR - titolo + menu centrato
-           ============================================= */
-        .nav-container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            padding-left: clamp(1rem, 4vw, 3rem);
-            padding-right: clamp(1rem, 4vw, 3rem);
-        }
-        .logo h1 { 
-            font-family: 'Crimson Text', serif; 
-            font-size: clamp(1.4rem, 4vw, 1.8rem); 
-            font-weight: 600; 
-            color: #8B4513; 
-            margin: 0; 
-        }
-        .logo span { color: #D2B48C; }
-        .nav-menu { 
-            display: flex; 
-            list-style: none; 
-            gap: clamp(1rem, 3vw, 2rem); 
-            margin: 0; 
-            padding: 0; 
-        }
-        .nav-menu li { margin: 0; }
-        .nav-menu a { 
-            color: #333; 
-            text-decoration: none; 
-            font-weight: 500; 
-            font-size: clamp(0.9rem, 2.5vw, 1rem); 
-            transition: color 0.3s; 
-        }
-        .nav-menu a:hover { color: #8B4513; }
-
-        /* MOBILE NAVBAR: logo con margine, menu centrato sotto */
-        @media (max-width: 600px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.6rem 1.2rem;
-            }
-            .logo {
-                width: 100%;
-                text-align: center;
-            }
-            .logo h1 {
-                font-size: 1.35rem;
-                padding-left: 0;
-            }
-            .nav-menu {
-                flex-direction: row;
-                justify-content: center;
-                gap: 1.4rem;
-                width: 100%;
-            }
-            .nav-menu a {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* HERO */
-        .hero { 
-            margin-top: clamp(70px, 12vw, 80px); 
-            padding: clamp(3rem, 10vw, 6rem) 0; 
-            background: 
-                radial-gradient(circle at 25% 25%, #D2B48C 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, #A0522D 1px, transparent 1px),
-                linear-gradient(135deg, #f8f4e9 0%, #e8d9c2 50%, #f0e6d2 100%),
-                linear-gradient(90deg, transparent 98%, rgba(0,0,0,0.02) 100%);
-            background-size: 60px 60px, 80px 80px, cover, 100px 100px;
-            position: relative; text-align: center;
-        }
-
-        /* Aumenta margine top su mobile perché la navbar diventa più alta */
-        @media (max-width: 600px) {
-            .hero {
-                margin-top: 105px;
-            }
-        }
-
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(139,69,19,0.05); border-bottom: 1px solid rgba(210,180,140,0.3);
-        }
-        .hero-content { max-width: 90vw; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); position: relative; z-index: 2; }
-        .hero-title { 
-            font-family: 'Crimson Text', serif; font-size: clamp(2rem, 8vw, 3.5rem); color: #8B4513; margin-bottom: clamp(0.8rem, 3vw, 1rem); 
-            text-shadow: 1px 1px 3px rgba(255,255,255,0.8); background: rgba(255,255,255,0.95);
-            padding: clamp(1rem, 4vw, 1.2rem) clamp(1.5rem, 5vw, 2.5rem); border-radius: clamp(15px, 4vw, 25px); 
-            display: inline-block; box-shadow: 0 clamp(8px, 3vw, 10px) clamp(20px, 6vw, 30px) rgba(0,0,0,0.15);
-        }
-        .hero-subtitle { 
-            font-size: clamp(1rem, 4vw, 1.3rem); color: #5a4a3a; margin: clamp(0.5rem, 2vw, 1rem) 0 clamp(1.5rem, 4vw, 2rem); 
-            font-weight: 400; background: rgba(248,244,233,0.95); 
-            padding: clamp(1.2rem, 4vw, 1.5rem) clamp(1.5rem, 5vw, 2.5rem); border-radius: clamp(12px, 3vw, 20px);
-            border-left: clamp(4px, 1.5vw, 6px) solid #D2B48C; box-shadow: 0 clamp(5px, 2vw, 5px) clamp(15px, 4vw, 20px) rgba(0,0,0,0.1);
-        }
-
-        /* PRODOTTI */
-        .sezione-titolo { text-align: center; font-family: 'Crimson Text', serif; color: #8B4513; font-size: clamp(2rem, 6vw, 2.5rem); margin-bottom: clamp(1rem, 3vw, 1rem); }
-        .sezione-sottotitolo { text-align: center; font-size: clamp(1rem, 3vw, 1.1rem); color: #666; margin-bottom: clamp(2rem, 6vw, 3rem); }
-        .prodotti { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 45vw, 320px), 1fr)); 
-            gap: clamp(1.2rem, 4vw, 2rem); 
-            margin-top: 2rem; 
-        }
-        .prodotto { 
-            background: white; 
-            border-radius: 15px; 
-            overflow: hidden; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
-            transition: all 0.3s; 
-        }
-        .prodotto:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
-        }
-        .prodotto img { 
-            width: 100%; 
-            height: clamp(160px, 35vw, 220px); 
-            object-fit: cover; 
-        }
-        .prodotto h3 { 
-            margin: clamp(0.8rem, 3vw, 1.2rem); 
-            font-family: 'Crimson Text', serif; 
-            font-size: clamp(1.1rem, 3.5vw, 1.3rem); 
-            color: #8B4513; 
-        }
-        .prodotto p { 
-            margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(0.8rem, 2vw, 1rem); 
-            color: #666; 
-            font-size: clamp(0.85rem, 2.5vw, 0.95rem); 
-        }
-        .prezzo { 
-            font-weight: 700; 
-            color: #8B4513; 
-            font-size: clamp(1.1rem, 3.5vw, 1.3rem); 
-            margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(1.2rem, 4vw, 1.5rem); 
-        }
-
-        /* PAGINAZIONE */
-        .paginazione { 
-            text-align: center; 
-            margin: clamp(3rem, 8vw, 4rem) 0; 
-        }
-        .paginazione a, .paginazione span { 
-            background: #f8f4e9; 
-            color: #8B4513; 
-            padding: clamp(0.8rem, 3vw, 1rem) clamp(1.2rem, 4vw, 1.5rem); 
-            margin: 0 clamp(0.3rem, 1.5vw, 0.5rem); 
-            text-decoration: none; 
-            border-radius: 25px; 
-            font-weight: 600; 
-            transition: all 0.3s; 
-            font-size: clamp(1rem, 3vw, 1.1rem); 
-            display: inline-block; 
-            min-width: clamp(4rem, 10vw, 5rem);
-            cursor: pointer;
-        }
-        .paginazione a:hover, .paginazione a.attiva { 
-            background: linear-gradient(135deg, #8B4513, #A0522D); 
-            color: white; 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 20px rgba(139,69,19,0.3);
-        }
-        .paginazione span { background: #D2B48C; color: white; font-weight: 700; }
-
-        /* IN ARRIVO */
-        .in-arrivo {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #f8f4e9, #fff);
-            border: 3px dashed #D2B48C;
-            border-radius: 20px;
-            padding: clamp(4rem, 12vw, 6rem);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: clamp(300px, 50vw, 400px);
-        }
-        .in-arrivo-icon {
-            font-size: clamp(4rem, 12vw, 6rem);
-            color: #D2B48C;
-            margin-bottom: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-        .in-arrivo h3 {
-            font-family: 'Crimson Text', serif;
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
-            color: #8B4513;
-            margin-bottom: 1rem;
-        }
-        .in-arrivo p {
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-            color: #666;
-            max-width: 500px;
-            line-height: 1.6;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* CONTATTI */
-        #contatti { 
-            background: #f8f4e9; 
-            padding: clamp(3rem, 8vw, 4rem) 0; 
-        }
-        #contatti .container { 
-            padding-top: clamp(1rem, 3vw, 2rem); 
-            padding-bottom: clamp(2rem, 5vw, 3rem);
-        }
-        #contatti h2 { 
-            font-family: 'Crimson Text', serif; 
-            color: #8B4513; 
-            margin-bottom: clamp(1.5rem, 4vw, 2rem); 
-            font-size: clamp(1.8rem, 6vw, 2.5rem); 
-            text-align: center;
-        }
-        .contatti-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: clamp(2rem, 6vw, 3rem); 
-            align-items: center; 
-        }
-        .contatti-info { 
-            text-align: center; 
-            order: 2; 
-            background: rgba(255,255,255,0.95);
-            padding: clamp(2rem, 6vw, 3rem);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .contatti-info p { 
-            font-size: clamp(1rem, 3vw, 1.2rem); 
-            margin-bottom: clamp(1rem, 3vw, 1.5rem); 
-            line-height: 1.6; 
-        }
-        .contatti-info a { 
-            color: #8B4513; 
-            text-decoration: none; 
-            font-weight: 600; 
-            display: inline-block; 
-            margin-top: 0.3rem; 
-            padding: 0.3rem 0; 
-            transition: all 0.2s;
-        }
-        .contatti-info a:hover { 
-            color: #A0522D; 
-            text-decoration: underline; 
-            transform: translateX(4px);
-        }
-        .contatti-mappa { 
-            order: 1; 
-            margin-bottom: clamp(1rem, 3vw, 1.5rem); 
-        }
-        .contatti-mappa iframe { 
-            width: 100%; 
-            height: clamp(280px, 45vw, 350px); 
-            border-radius: 15px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
-        }
-
-        /* FOOTER */
-        footer { 
-            background: #333; 
-            color: white; 
-            text-align: center; 
-            padding: clamp(1.5rem, 5vw, 2.5rem) 0; 
-            margin-top: clamp(2rem, 6vw, 3rem);
-            border-top: 4px solid #D2B48C;
-        }
-       Qui sotto c’è il codice **da quella riga in poi fino alla fine del file HTML**, come da tua richiesta:
-
-```html
-footer .container { padding-left: 0; padding-right: 0; }
-        footer p { 
-            margin: 0; 
-            font-size: clamp(0.85rem, 2.2vw, 0.95rem); 
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header-neutro">
+        <header class="header-neutro">
+    <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <h1>I Sapori <span>di Una Volta</span></h1>
             </div>
             <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#prodotti">Prodotti</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
         </div>
-    </header>
+    </nav>
+</header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Prodotti tipici di Fossano</h1>
-            <p class="hero-subtitle">
-                Sapori autentici della tradizione langarola, raccolti e lavorati con cura per regalarti il gusto autentico del territorio.
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h2 class="hero-title">Sapori Autentici dal Cuore di Fossano</h2>
+        <p class="hero-subtitle">
+            Banco Alimentare Restuccia Simone<br>
+            Salumi DOP - Formaggi Piemontesi - Prodotti Tradizionali
+        </p>
+    </div>
+</section>
+
+<!-- PRODOTTI -->
+<section id="prodotti" class="container">
+    <h2 class="sezione-titolo">Il Nostro Catalogo</h2>
+    <p class="sezione-sottotitolo">Scopri i nostri formaggi e salumi locali (1-12 di 20)</p>
+    
+    <div class="prodotti">
+        <div class="prodotto">
+            <img src="Assortimento salumi e formaggi.jpg" alt="Assortimento salumi e formaggi">
+            <h3>Assortimento Completo</h3>
+            <p>Perfetto per aperitivi e taglieri misti piemontesi.</p>
+            <div class="prezzo">€18,50</div>
+        </div>
+        <div class="prodotto">
+            <img src="Bitto.jfif" alt="Bitto">
+            <h3>Bitto DOP</h3>
+            <p>Formaggio erborinato stagionato in alpeggio.</p>
+            <div class="prezzo">€16,90/kg</div>
+        </div>
+        <div class="prodotto">
+            <img src="BraDop.jpg" alt="Bra DOP">
+            <h3>Bra DOP</h3>
+            <p>Saporito e versatile, re dei formaggi cuneesi.</p>
+            <div class="prezzo">€12,90/kg</div>
+        </div>
+        <div class="prodotto">
+            <img src="Caprino.jpg" alt="Caprino">
+            <h3>Caprino Fresco</h3>
+            <p>Morbido e aromatico, ideale con miele.</p>
+            <div class="prezzo">€11,50/kg</div>
+        </div>
+        <div class="prodotto">
+            <img src="Castelmagno.jpg" alt="Castelmagno">
+            <h3>Castelmagno DOP</h3>
+            <p>Gioiello di Cuneo, gusto unico e persistente.</p>
+            <div class="prezzo">€22,00/kg</div>
+        </div>
+        <div class="prodotto">
+            <img src="Crudo Cuneo.jpg" alt="Crudo di Cuneo">
+            <h3>Crudo di Cuneo DOP</h3>
+            <p>Prosciutto crudo dolce e magro.</p>
+            <div class="prezzo">€24,90/kg</div>
+        </div>
+    </div>
+
+    <!-- PAGINAZIONE -->
+    <div class="paginazione">
+        <a href="#" class="pagina-link" data-pagina="1">&laquo; Precedente</a>
+        <span class="pagina-attiva" data-pagina="1">1</span>
+        <a href="#" class="pagina-link" data-pagina="2">2</a>
+        <a href="#" class="pagina-link" data-pagina="2">Avanti &raquo;</a>
+    </div>
+
+    <!-- MESSAGGIO "IN ARRIVO" (solo pagina 2) -->
+    <div id="in-arrivo" class="container">
+        <div class="paginazione">
+            <p class="sezione-in-arrivo">
+                In arrivo: resta connesso per altre novità.
             </p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Prodotti -->
-    <section id="prodotti" class="container">
-        <h2 class="sezione-titolo">La nostra selezione</h2>
-        <p class="sezione-sottotitolo">
-            Scopri i nostri prodotti tipici artigianali, tutti realizzati con ingredienti locali e ricette tradizionali.
-        </p>
-        <div class="prodotti">
-            <!-- Card prodotto esempio -->
-            <article class="prodotto">
-                <img src="ai-img/bruschette-tradizionali.webp" alt="Bruschette tradizionali">
-                <h3>Bruschette tradizionali</h3>
-                <p>Squisite bruschette croccanti, ideali come antipasto o accompagnamento per un aperitivo in casa.</p>
-                <div class="prezzo">€ 12,00</div>
-            </article>
-
-            <!-- Card prodotto esempio -->
-            <article class="prodotto in-arrivo">
-                <div class="in-arrivo">
-                    <div class="in-arrivo-icon">⏳</div>
-                    <h3>Altri prodotti in arrivo</h3>
-                    <p>Stiamo lavorando per ampliare la nostra selezione con nuovi prodotti tipici artigianali.</p>
-                </div>
-            </article>
-        </div>
-
-        <!-- Paginazione -->
-        <div class="paginazione">
-            <span>Pag. 1</span>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-        </div>
-    </section>
-
-    <!-- Contatti -->
-    <section id="contatti" class="container">
+<!-- CONTATTI -->
+<section id="contatti">
+    <div class="container">
         <h2>Contattaci</h2>
         <div class="contatti-grid">
             <div class="contatti-info">
-                <p>Per informazioni sui prodotti e per ordini personalizzati, contattaci tramite WhatsApp o e‑mail.</p>
-                <p>
-                    <strong>WhatsApp:</strong> <a href="https://wa.me/3407234567" target="_blank">+39 340 723 4567</a><br>
-                    <strong>E‑mail:</strong> <a href="mailto:info@isaporidiunavolta.it">info@isaporidiunavolta.it</a>
-                </p>
+                <p><strong>I Sapori di Una Volta</strong><br>Banco Alimentare Restuccia Simone</p>
+                <p><strong>📞 Telefono:</strong> <a href="tel:+390172740452">+39 0172 740452</a></p>
+                <p><strong>✉️ Email:</strong> <a href="mailto:info@saporidianavolta.it">info@saporidianavolta.it</a></p>
+                <p><strong>📍 Indirizzo:</strong><br>Via Macallè 7<br>12045 Fossano (CN) - Piemonte</p>
+                <p><strong>🕒 Orari:</strong><br>Lun–Sab 8:00–19:30<br>Domenica chiuso</p>
             </div>
             <div class="contatti-mappa">
                 <iframe 
-                    src="https://maps.google.com/maps?q=Fossano&amp;t=m&amp;z=15&amp;output=embed" 
-                    loading="lazy" 
-                    title="Localizzazione a Fossano">
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2821.408483982345!2d7.724856315704!3d44.554912979159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478a2f8e8e8e8e8e%3A0x9c8f7e6d5c4b3a29!2sVia%20Macall%C3%A8%207%2C%2012045%20Fossano%20CN%2C%20Italia!5e0!3m2!1sit!2sit!4v1730582400000!5m2!1sit!2sit" 
+                    width="100%" height="350" style="border:0;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 I Sapori di Una Volta. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <p>&copy; 2026 I Sapori di Una Volta - Tutti i diritti riservati | <a href="#privacy">Privacy Policy</a> | P.IVA: [inserisci tua]</p>
+    </div>
+</footer>
+
+<script>
+    // Nascondi "in arrivo" alla pagina 1
+    const inArrivo = document.getElementById("in-arrivo");
+    const paginaAttivaSpan = document.querySelector(".pagina-attiva");
+    const linkPagina2 = document.querySelector(".pagina-link[data-pagina='2']");
+
+    // Mostra solo pagina 1 all'avvio
+    inArrivo.style.display = "none";
+
+    // Clicca i link "Pagina 1" e "Pagina 2"
+    document.querySelectorAll(".pagina-link").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const pagina = link.dataset.pagina;
+
+            if (pagina === "1") {
+                paginaAttivaSpan.textContent = "1";
+                paginaAttivaSpan.setAttribute("data-pagina", "1");
+                inArrivo.style.display = "none";
+            } else if (pagina === "2") {
+                paginaAttivaSpan.textContent = "2";
+                paginaAttivaSpan.setAttribute("data-pagina", "2");
+                inArrivo.style.display = "block";
+                // Scrolla alla sezione "in arrivo" quando clicchi la pagina 2
+                inArrivo.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+    });
+</script>
 </body>
 </html>
