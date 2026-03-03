@@ -7,7 +7,340 @@
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #f9f9f9; 
+            color: #333; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px; /* FIX: supporto nativo per scroll su ancoraggi */
+        }
+     
+        .container { 
+            width: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding-left: clamp(1.5rem, 4vw, 3rem);
+            padding-right: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        @media (min-width: 1200px) {
+            .nav-container { padding: 0 3rem; }
+        }
+
+        .hero-content { max-width: clamp(500px, 85vw, 800px); }
+        .prodotti { padding: 0 clamp(0.5rem, 2vw, 1rem); }
+
+        /* HEADER */
+        .header-neutro { 
+            position: fixed; top: 0; width: 100%; background: #ffffff; border-bottom: 1px solid #e9e9e9; z-index: 100; transition: all 0.3s; 
+        }
+        .navbar { padding: clamp(0.8rem, 2vw, 1rem) 0; }
+
+        /* =============================================
+           FIX MOBILE NAVBAR - titolo + menu centrato
+           ============================================= */
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding-left: clamp(1rem, 4vw, 3rem);
+            padding-right: clamp(1rem, 4vw, 3rem);
+        }
+        .logo h1 { 
+            font-family: 'Crimson Text', serif; 
+            font-size: clamp(1.4rem, 4vw, 1.8rem); 
+            font-weight: 600; 
+            color: #8B4513; 
+            margin: 0; 
+        }
+        .logo span { color: #D2B48C; }
+        .nav-menu { 
+            display: flex; 
+            list-style: none; 
+            gap: clamp(1rem, 3vw, 2rem); 
+            margin: 0; 
+            padding: 0; 
+        }
+        .nav-menu li { margin: 0; }
+        .nav-menu a { 
+            color: #333; 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: clamp(0.9rem, 2.5vw, 1rem); 
+            transition: color 0.3s; 
+        }
+        .nav-menu a:hover { color: #8B4513; }
+
+        /* MOBILE NAVBAR: logo con margine, menu centrato sotto */
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+            .logo h1 {
+                font-size: 1.35rem;
+                padding-left: 0;
+            }
+            .nav-menu {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.4rem;
+                width: 100%;
+            }
+            .nav-menu a {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* HERO */
+        .hero { 
+            margin-top: clamp(70px, 12vw, 80px); 
+            padding: clamp(3rem, 10vw, 6rem) 0; 
+            background: 
+                radial-gradient(circle at 25% 25%, #D2B48C 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #A0522D 1px, transparent 1px),
+                linear-gradient(135deg, #f8f4e9 0%, #e8d9c2 50%, #f0e6d2 100%),
+                linear-gradient(90deg, transparent 98%, rgba(0,0,0,0.02) 100%);
+            background-size: 60px 60px, 80px 80px, cover, 100px 100px;
+            position: relative; text-align: center;
+        }
+
+        /* Aumenta margine top su mobile perché la navbar diventa più alta */
+        @media (max-width: 600px) {
+            .hero {
+                margin-top: 105px;
+            }
+        }
+
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(139,69,19,0.05); border-bottom: 1px solid rgba(210,180,140,0.3);
+        }
+        .hero-content { max-width: 90vw; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); position: relative; z-index: 2; }
+        .hero-title { 
+            font-family: 'Crimson Text', serif; font-size: clamp(2rem, 8vw, 3.5rem); color: #8B4513; margin-bottom: clamp(0.8rem, 3vw, 1rem); 
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.8); background: rgba(255,255,255,0.95);
+            padding: clamp(1rem, 4vw, 1.2rem) clamp(1.5rem, 5vw, 2.5rem); border-radius: clamp(15px, 4vw, 25px); 
+            display: inline-block; box-shadow: 0 clamp(8px, 3vw, 10px) clamp(20px, 6vw, 30px) rgba(0,0,0,0.15);
+        }
+        .hero-subtitle { 
+            font-size: clamp(1rem, 4vw, 1.3rem); color: #5a4a3a; margin: clamp(0.5rem, 2vw, 1rem) 0 clamp(1.5rem, 4vw, 2rem); 
+            font-weight: 400; background: rgba(248,244,233,0.95); 
+            padding: clamp(1.2rem, 4vw, 1.5rem) clamp(1.5rem, 5vw, 2.5rem); border-radius: clamp(12px, 3vw, 20px);
+            border-left: clamp(4px, 1.5vw, 6px) solid #D2B48C; box-shadow: 0 clamp(5px, 2vw, 5px) clamp(15px, 4vw, 20px) rgba(0,0,0,0.1);
+        }
+
+        /* PRODOTTI */
+        .sezione-titolo { text-align: center; font-family: 'Crimson Text', serif; color: #8B4513; font-size: clamp(2rem, 6vw, 2.5rem); margin-bottom: clamp(1rem, 3vw, 1rem); }
+        .sezione-sottotitolo { text-align: center; font-size: clamp(1rem, 3vw, 1.1rem); color: #666; margin-bottom: clamp(2rem, 6vw, 3rem); }
+        .prodotti { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 45vw, 320px), 1fr)); gap: clamp(1.2rem, 4vw, 2rem); margin-top: 2rem; }
+        .prodotto { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .prodotto:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .prodotto img { width: 100%; height: clamp(160px, 35vw, 220px); object-fit: cover; }
+        .prodotto h3 { margin: clamp(0.8rem, 3vw, 1.2rem); font-family: 'Crimson Text', serif; font-size: clamp(1.1rem, 3.5vw, 1.3rem); color: #8B4513; }
+        .prodotto p { margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(0.8rem, 2vw, 1rem); color: #666; font-size: clamp(0.85rem, 2.5vw, 0.95rem); }
+        .prezzo { font-weight: 700; color: #8B4513; font-size: clamp(1.1rem, 3.5vw, 1.3rem); margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(1.2rem, 4vw, 1.5rem); }
+
+        /* PAGINAZIONE */
+        .paginazione { 
+            text-align: center; 
+            margin: clamp(3rem, 8vw, 4rem) 0; 
+        }
+        .paginazione a, .paginazione span { 
+            background: #f8f4e9; 
+            color: #8B4513; 
+            padding: clamp(0.8rem, 3vw, 1rem) clamp(1.2rem, 4vw, 1.5rem); 
+            margin: 0 clamp(0.3rem, 1.5vw, 0.5rem); 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-weight: 600; 
+            transition: all 0.3s; 
+            font-size: clamp(1rem, 3vw, 1.1rem); 
+            display: inline-block; 
+            min-width: clamp(4rem, 10vw, 5rem);
+            cursor: pointer;
+        }
+        .paginazione a:hover, .paginazione a.attiva { 
+            background: linear-gradient(135deg, #8B4513, #A0522D); 
+            color: white; 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(139,69,19,0.3);
+        }
+        .paginazione span { background: #D2B48C; color: white; font-weight: 700; }
+
+        /* IN ARRIVO */
+        .in-arrivo {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8f4e9, #fff);
+            border: 3px dashed #D2B48C;
+            border-radius: 20px;
+            padding: clamp(4rem, 12vw, 6rem);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: clamp(300px, 50vw, 400px);
+        }
+        .in-arrivo-icon {
+            font-size: clamp(4rem, 12vw, 6rem);
+            color: #D2B48C;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        .in-arrivo h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+        .in-arrivo p {
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            color: #666;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* CONTATTI */
+        #contatti { 
+            background: #f8f4e9; 
+            padding: clamp(3rem, 8vw, 4rem) 0; 
+        }
+        #contatti .container { 
+            padding-top: clamp(1rem, 3vw, 2rem); 
+            padding-bottom: clamp(2rem, 5vw, 3rem);
+        }
+        #contatti h2 { 
+            font-family: 'Crimson Text', serif; 
+            color: #8B4513; 
+            margin-bottom: clamp(1.5rem, 4vw, 2rem); 
+            font-size: clamp(1.8rem, 6vw, 2.5rem); 
+            text-align: center;
+        }
+        .contatti-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: clamp(2rem, 6vw, 3rem); 
+            align-items: center; 
+        }
+        .contatti-info { 
+            text-align: center; 
+            order: 2; 
+            background: rgba(255,255,255,0.95);
+            padding: clamp(2rem, 6vw, 3rem);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .contatti-info p { 
+            font-size: clamp(1rem, 3vw, 1.2rem); 
+            margin-bottom: clamp(1rem, 3vw, 1.5rem); 
+            line-height: 1.6; 
+        }
+        .contatti-info a { 
+            color: #8B4513; 
+            text-decoration: none; 
+            font-weight: 600; 
+            display: inline-block; 
+            margin-top: 0.3rem; 
+            padding: 0.3rem 0; 
+            transition: all 0.2s;
+        }
+        .contatti-info a:hover { 
+            color: #A0522D; 
+            text-decoration: underline; 
+            transform: translateX(4px);
+        }
+        .contatti-mappa { 
+            order: 1; 
+            margin-bottom: clamp(1rem, 3vw, 1.5rem); 
+        }
+        .contatti-mappa iframe { 
+            width: 100%; 
+            height: clamp(280px, 45vw, 350px); 
+            border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+        }
+
+        /* FOOTER */
+        footer { 
+            background: #333; 
+            color: white; 
+            text-align: center; 
+            padding: clamp(1.5rem, 5vw, 2.5rem) 0; 
+            margin-top: clamp(2rem, 6vw, 3rem);
+            border-top: 4px solid #D2B48C;
+        }
+        footer .container { padding-left: 0; padding-right: 0; }
+        footer p { 
+            margin: 0; 
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem); 
+            line-height: 1.5;
+        }
+        footer a { color: #D2B48C; text-decoration: none; font-weight: 500; }
+        footer a:hover { color: #fff; text-decoration: underline; }
+
+        /* DESKTOP CONTATTI */
+        @media (min-width: 1000px) {
+            .contatti-grid { grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 3rem); }
+            .contatti-info { text-align: left; order: 1; }
+            .contatti-mappa { order: 2; margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header-neutro">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>I Sapori <span>di Una Volta</span></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#prodotti">Prodotti</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Sapori Autentici dal Cuore di Fossano</h2>
+            <p class="hero-subtitle">Banco Alimentare Di Restuccia Simone<br>Salumi DOP - Formaggi Piemontesi - Prodotti Tradizionali</p>
+        </div>
+    </section>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Sapori di Una Volta - Prodotti Tipici Fossano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #f9f9f9; 
+            color: #333; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px; /* FIX: supporto nativo per scroll su ancoraggi */
+        }
      
         .container { 
             width: 100%; 
@@ -317,114 +650,5 @@
     </section>
 
     <!-- PRODOTTI -->
-    <section id="prodotti" class="container" style="padding-top: clamp(2rem, 6vw, 4rem); padding-bottom: clamp(2rem, 6vw, 4rem);">
-        <h2 class="sezione-titolo">Il Nostro Catalogo</h2>
-        <p class="sezione-sottotitolo" id="paginazione-testo">Scopri i nostri prodotti <span id="prodotti-range">(1-6 di 12)</span></p>
-        
-        <div class="prodotti" id="griglia-prodotti"></div>
+    <section id="prodotti" class="container" style="padding-top: clamp
 
-        <div class="paginazione" id="paginazione">
-            <a href="#" class="pag-link" data-page="1" id="pag-1">1</a>
-            <a href="#" class="pag-link" data-page="2" id="pag-2">2</a>
-        </div>
-    </section>
-
-    <!-- CONTATTI -->
-    <section id="contatti">
-        <div class="container">
-            <h2>Contattaci</h2>
-            <div class="contatti-grid">
-                <div class="contatti-info">
-                    <p><strong>I Sapori di Una Volta</strong><br>Banco Alimentare Restuccia Simone</p>
-                    <p><strong>📞 Telefono:</strong> <a href="tel:+390172740452">+39 0172 740452</a></p>
-                    <p><strong>✉️ Email:</strong> <a href="mailto:info@saporidianavolta.it">info@saporidianavolta.it</a></p>
-                    <p><strong>📍 Indirizzo:</strong><br>Via Macallè 7<br>12045 Fossano (CN) - Piemonte</p>
-                    <p><strong>🕒 Orari:</strong><br>Lun–Sab 8:00–19:30<br>Domenica chiuso</p>
-                </div>
-                <div class="contatti-mappa">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2821.408483982345!2d7.724856315704!3d44.554912979159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478a2f8e8e8e8e8e%3A0x9c8f7e6d5c4b3a29!2sVia%20Macall%C3%A8%207%2C%2012045%20Fossano%20CN%2C%20Italia!5e0!3m2!1sit!2sit!4v1730582400000!5m2!1sit!2sit" 
-                        width="100%" height="350" style="border:0;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 I Sapori di Una Volta - Tutti i diritti riservati | <a href="#privacy">Privacy Policy</a> | P.IVA: [inserisci tua]</p>
-        </div>
-    </footer>
-
-    <script>
-        const prodotti = [
-            { nome: "Assortimento Completo", prezzo: "€18,50", img: "Assortimento salumi e formaggi.jpg", desc: "Perfetto per aperitivi e taglieri misti piemontesi." },
-            { nome: "Bitto DOP", prezzo: "€16,90/kg", img: "Bitto.jfif", desc: "Formaggio erborinato stagionato in alpeggio." },
-            { nome: "Bra DOP", prezzo: "€12,90/kg", img: "BraDop.jpg", desc: "Saporito e versatile, re dei formaggi cuneesi." },
-            { nome: "Caprino Fresco", prezzo: "€11,50/kg", img: "Caprino.jpg", desc: "Morbido e aromatico, ideale con miele." },
-            { nome: "Castelmagno DOP", prezzo: "€22,00/kg", img: "Castelmagno.jpg", desc: "Gioiello di Cuneo, gusto unico e persistente." },
-            { nome: "Crudo di Cuneo DOP", prezzo: "€24,90/kg", img: "Crudo Cuneo.jpg", desc: "Prosciutto crudo dolce e magro." }
-        ];
-
-        let paginaCorrente = 1;
-
-        function mostraPagina(pagina) {
-            const griglia = document.getElementById('griglia-prodotti');
-            
-            if (pagina === 1) {
-                griglia.innerHTML = '';
-                prodotti.forEach(prodotto => {
-                    const div = document.createElement('div');
-                    div.className = 'prodotto';
-                    div.innerHTML = `
-                        <img src="${prodotto.img}" alt="${prodotto.nome}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmNGU5Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzhCNDUxMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltbWFnaW5lPC90ZXh0Pjwvc3ZnPg=='">
-                        <h3>${prodotto.nome}</h3>
-                        <p>${prodotto.desc}</p>
-                        <div class="prezzo">${prodotto.prezzo}</div>
-                    `;
-                    griglia.appendChild(div);
-                });
-                document.getElementById('prodotti-range').textContent = '(1-6 di 12)';
-            } else {
-                // FIX: renderizza "In arrivo" nella griglia, NON fa scroll a #contatti
-                griglia.innerHTML = `
-                    <div class="in-arrivo">
-                        <div class="in-arrivo-icon">🚀</div>
-                        <h3>In Arrivo</h3>
-                        <p>Stiamo preparando nuovi prodotti esclusivi!<br>Resta aggiornato per le prossime uscite.</p>
-                    </div>
-                `;
-                document.getElementById('prodotti-range').textContent = '(7-12 di 12)';
-            }
-        }
-
-        function aggiornaPaginazione() {
-            document.querySelectorAll('.pag-link').forEach(link => link.classList.remove('attiva'));
-            document.getElementById(`pag-${paginaCorrente}`).classList.add('attiva');
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            mostraPagina(1);
-            aggiornaPaginazione();
-
-            document.querySelectorAll('.pag-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation(); // FIX: blocca propagazione che causava scroll a #contatti
-
-                    paginaCorrente = parseInt(this.dataset.page);
-
-                    // FIX: scroll alla sezione prodotti, non a #contatti
-                    const sezioneProdotti = document.getElementById('prodotti');
-                    const offset = sezioneProdotti.getBoundingClientRect().top + window.scrollY - 120;
-                    window.scrollTo({ top: offset, behavior: 'smooth' });
-
-                    mostraPagina(paginaCorrente);
-                    aggiornaPaginazione();
-                });
-            });
-        });
-    </script>
-</body>
-</html>
