@@ -306,9 +306,102 @@
             margin-top: clamp(2rem, 6vw, 3rem);
             border-top: 4px solid #D2B48C;
         }
-        footer .container { padding-left: 0; padding-right: 0; }
+       Qui sotto c’è il codice **da quella riga in poi fino alla fine del file HTML**, come da tua richiesta:
+
+```html
+footer .container { padding-left: 0; padding-right: 0; }
         footer p { 
             margin: 0; 
             font-size: clamp(0.85rem, 2.2vw, 0.95rem); 
             line-height: 1.5;
         }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-neutro">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>I Sapori <span>di Una Volta</span></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#prodotti">Prodotti</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Prodotti tipici di Fossano</h1>
+            <p class="hero-subtitle">
+                Sapori autentici della tradizione langarola, raccolti e lavorati con cura per regalarti il gusto autentico del territorio.
+            </p>
+        </div>
+    </section>
+
+    <!-- Prodotti -->
+    <section id="prodotti" class="container">
+        <h2 class="sezione-titolo">La nostra selezione</h2>
+        <p class="sezione-sottotitolo">
+            Scopri i nostri prodotti tipici artigianali, tutti realizzati con ingredienti locali e ricette tradizionali.
+        </p>
+        <div class="prodotti">
+            <!-- Card prodotto esempio -->
+            <article class="prodotto">
+                <img src="ai-img/bruschette-tradizionali.webp" alt="Bruschette tradizionali">
+                <h3>Bruschette tradizionali</h3>
+                <p>Squisite bruschette croccanti, ideali come antipasto o accompagnamento per un aperitivo in casa.</p>
+                <div class="prezzo">€ 12,00</div>
+            </article>
+
+            <!-- Card prodotto esempio -->
+            <article class="prodotto in-arrivo">
+                <div class="in-arrivo">
+                    <div class="in-arrivo-icon">⏳</div>
+                    <h3>Altri prodotti in arrivo</h3>
+                    <p>Stiamo lavorando per ampliare la nostra selezione con nuovi prodotti tipici artigianali.</p>
+                </div>
+            </article>
+        </div>
+
+        <!-- Paginazione -->
+        <div class="paginazione">
+            <span>Pag. 1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+        </div>
+    </section>
+
+    <!-- Contatti -->
+    <section id="contatti" class="container">
+        <h2>Contattaci</h2>
+        <div class="contatti-grid">
+            <div class="contatti-info">
+                <p>Per informazioni sui prodotti e per ordini personalizzati, contattaci tramite WhatsApp o e‑mail.</p>
+                <p>
+                    <strong>WhatsApp:</strong> <a href="https://wa.me/3407234567" target="_blank">+39 340 723 4567</a><br>
+                    <strong>E‑mail:</strong> <a href="mailto:info@isaporidiunavolta.it">info@isaporidiunavolta.it</a>
+                </p>
+            </div>
+            <div class="contatti-mappa">
+                <iframe 
+                    src="https://maps.google.com/maps?q=Fossano&amp;t=m&amp;z=15&amp;output=embed" 
+                    loading="lazy" 
+                    title="Localizzazione a Fossano">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 I Sapori di Una Volta. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+</body>
+</html>
