@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I Sapori di Una Volta - Prodotti Tipici Fossano</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
     font-family:'Poppins',sans-serif;
-    background:#f9f9f9;
-    color:#333;
+    background:#fdfbf7;
+    color:#2f2f2f;
     line-height:1.6;
     overflow-x:hidden;
 }
@@ -30,7 +30,8 @@ header{
     position:fixed;
     top:0;
     width:100%;
-    background:#fff;
+    background:#ffffffee;
+    backdrop-filter:blur(10px);
     border-bottom:1px solid #eee;
     z-index:1000;
 }
@@ -39,12 +40,12 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 20px;
+    padding:18px 20px;
 }
 
 .logo h1{
     font-family:'Crimson Text',serif;
-    font-size:1.5rem;
+    font-size:1.6rem;
     color:#8B4513;
 }
 .logo span{color:#D2B48C}
@@ -52,23 +53,32 @@ header{
 .nav-menu{
     display:flex;
     list-style:none;
-    gap:30px;
+    gap:35px;
 }
-
 .nav-menu a{
     text-decoration:none;
     color:#333;
     font-weight:500;
+    position:relative;
 }
-
-.nav-menu a:hover{color:#8B4513}
+.nav-menu a::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    left:0;
+    width:0;
+    height:2px;
+    background:#8B4513;
+    transition:.3s;
+}
+.nav-menu a:hover::after{width:100%}
 
 /* HAMBURGER */
 .hamburger{
     display:none;
     flex-direction:column;
-    cursor:pointer;
     gap:5px;
+    cursor:pointer;
 }
 .hamburger span{
     width:25px;
@@ -78,96 +88,112 @@ header{
 
 /* HERO */
 .hero{
-    margin-top:80px;
-    padding:60px 20px;
+    margin-top:90px;
+    padding:100px 20px;
     background:linear-gradient(135deg,#f8f4e9,#e8d9c2);
     text-align:center;
 }
-
 .hero h2{
     font-family:'Crimson Text',serif;
-    font-size:2.5rem;
+    font-size:3rem;
     color:#8B4513;
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
-
 .hero p{
-    font-size:1.1rem;
-    color:#555;
+    font-size:1.2rem;
+    color:#5a4a3a;
 }
 
-/* PRODOTTI */
+/* SEZIONE PRODOTTI */
 #prodotti{
-    padding:60px 0;
+    padding:80px 0;
 }
-
 .sezione-titolo{
     text-align:center;
     font-family:'Crimson Text',serif;
-    font-size:2rem;
+    font-size:2.4rem;
     color:#8B4513;
-    margin-bottom:10px;
 }
-
 .sezione-sottotitolo{
     text-align:center;
-    margin-bottom:40px;
-    color:#666;
+    margin-bottom:50px;
+    color:#777;
 }
 
 .prodotti{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+    gap:30px;
 }
 
 .prodotto{
     background:#fff;
-    border-radius:15px;
+    border-radius:18px;
     overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-    transition:.3s;
+    box-shadow:0 10px 35px rgba(0,0,0,0.07);
+    transition:.4s;
 }
 .prodotto:hover{
-    transform:translateY(-5px);
+    transform:translateY(-8px);
+    box-shadow:0 18px 45px rgba(0,0,0,0.12);
 }
 
 .prodotto img{
     width:100%;
-    height:200px;
+    height:220px;
     object-fit:cover;
 }
 
 .prodotto h3{
-    padding:15px;
+    padding:18px 18px 10px;
     font-family:'Crimson Text',serif;
     color:#8B4513;
+    font-size:1.3rem;
 }
 
 .prodotto p{
-    padding:0 15px 10px;
+    padding:0 18px 15px;
     color:#666;
+    font-size:.95rem;
 }
 
 .prezzo{
-    padding:0 15px 20px;
-    font-weight:bold;
+    padding:0 18px 25px;
+    font-weight:700;
+    font-size:1.2rem;
     color:#8B4513;
+}
+
+/* IN ARRIVO */
+.in-arrivo{
+    grid-column:1/-1;
+    text-align:center;
+    padding:80px 20px;
+    border:3px dashed #D2B48C;
+    border-radius:20px;
+    background:#fff;
+}
+.in-arrivo h3{
+    font-family:'Crimson Text',serif;
+    font-size:2rem;
+    color:#8B4513;
+    margin-bottom:15px;
 }
 
 /* PAGINAZIONE */
 .paginazione{
     text-align:center;
-    margin-top:40px;
+    margin-top:50px;
 }
 .paginazione a{
-    padding:10px 18px;
-    background:#f8f4e9;
+    padding:12px 20px;
+    margin:0 8px;
+    border-radius:30px;
+    background:#f4efe6;
     color:#8B4513;
-    margin:0 5px;
-    border-radius:20px;
-    text-decoration:none;
     font-weight:600;
+    text-decoration:none;
+    transition:.3s;
 }
 .paginazione a.attiva,
 .paginazione a:hover{
@@ -178,103 +204,65 @@ header{
 /* CONTATTI */
 #contatti{
     background:#f8f4e9;
-    padding:60px 0;
+    padding:80px 0;
 }
-
 .contatti-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:40px;
+    gap:50px;
     align-items:center;
 }
-
 .contatti-info{
     background:#fff;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
-
-.contatti-info p{
-    margin-bottom:15px;
-}
-
+.contatti-info p{margin-bottom:18px}
 .contatti-info a{
     color:#8B4513;
     text-decoration:none;
     font-weight:600;
 }
-
 .contatti-mappa iframe{
     width:100%;
-    height:350px;
-    border-radius:15px;
+    height:380px;
+    border-radius:20px;
     border:0;
 }
 
 /* FOOTER */
 footer{
-    background:#333;
+    background:#2b2b2b;
     color:#fff;
     text-align:center;
-    padding:25px 15px;
-    margin-top:40px;
+    padding:30px 15px;
+    margin-top:60px;
 }
 footer a{color:#D2B48C}
 
-/* ================= MOBILE ================= */
+/* RESPONSIVE */
 @media(max-width:900px){
-
-    .contatti-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero h2{
-        font-size:2rem;
-    }
+    .contatti-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:768px){
-
     .nav-menu{
         position:absolute;
-        top:70px;
+        top:75px;
         left:0;
         width:100%;
         background:#fff;
         flex-direction:column;
         align-items:center;
-        gap:20px;
-        padding:20px 0;
+        padding:30px 0;
+        gap:25px;
         display:none;
-        border-bottom:1px solid #eee;
     }
-
-    .nav-menu.active{
-        display:flex;
-    }
-
-    .hamburger{
-        display:flex;
-    }
-
-    .hero{
-        padding:40px 15px;
-    }
-
-    .hero h2{
-        font-size:1.8rem;
-    }
-
-    .hero p{
-        font-size:1rem;
-    }
-}
-
-@media(max-width:480px){
-    .prodotto img{
-        height:170px;
-    }
+    .nav-menu.active{display:flex}
+    .hamburger{display:flex}
+    .hero{padding:70px 20px}
+    .hero h2{font-size:2rem}
 }
 </style>
 </head>
@@ -294,57 +282,98 @@ footer a{color:#D2B48C}
     </ul>
 
     <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </div>
 </div>
 </header>
 
 <section id="home" class="hero">
-    <h2>Sapori Autentici dal Cuore di Fossano</h2>
-    <p>Banco Alimentare Restuccia Simone<br>
-    Salumi DOP - Formaggi Piemontesi - Prodotti Tradizionali</p>
+<h2>Sapori Autentici dal Cuore di Fossano</h2>
+<p>Banco Alimentare Restuccia Simone<br>
+Salumi DOP - Formaggi Piemontesi - Prodotti Tradizionali</p>
 </section>
 
 <section id="prodotti" class="container">
-    <h2 class="sezione-titolo">Il Nostro Catalogo</h2>
-    <p class="sezione-sottotitolo">Scopri i nostri prodotti</p>
+<h2 class="sezione-titolo">Il Nostro Catalogo</h2>
+<p class="sezione-sottotitolo">Scopri i nostri prodotti</p>
 
-    <div class="prodotti">
-        <!-- Qui puoi reinserire il tuo JS prodotti senza problemi -->
-    </div>
+<div class="prodotti" id="griglia-prodotti"></div>
+
+<div class="paginazione">
+<a href="#" class="pag-link attiva" data-page="1">1</a>
+<a href="#" class="pag-link" data-page="2">2</a>
+</div>
 </section>
 
 <section id="contatti">
 <div class="container">
-    <h2 class="sezione-titolo">Contattaci</h2>
-    <div class="contatti-grid">
-        <div class="contatti-info">
-            <p><strong>I Sapori di Una Volta</strong><br>Banco Alimentare Restuccia Simone</p>
-            <p><strong>📞</strong> <a href="tel:+390172740452">+39 0172 740452</a></p>
-            <p><strong>✉️</strong> <a href="mailto:info@saporidianavolta.it">info@saporidianavolta.it</a></p>
-            <p><strong>📍</strong><br>Via Macallè 7<br>12045 Fossano (CN) - Piemonte</p>
-            <p><strong>🕒</strong><br>Lun–Sab 8:00–19:30<br>Domenica chiuso</p>
-        </div>
-        <div class="contatti-mappa">
-            <iframe src="https://www.google.com/maps?q=Via+Macallè+7+Fossano&output=embed"></iframe>
-        </div>
-    </div>
+<h2 class="sezione-titolo">Contattaci</h2>
+<div class="contatti-grid">
+<div class="contatti-info">
+<p><strong>I Sapori di Una Volta</strong><br>Banco Alimentare Restuccia Simone</p>
+<p><strong>📞</strong> <a href="tel:+390172740452">+39 0172 740452</a></p>
+<p><strong>✉️</strong> <a href="mailto:info@saporidianavolta.it">info@saporidianavolta.it</a></p>
+<p><strong>📍</strong><br>Via Macallè 7<br>12045 Fossano (CN) - Piemonte</p>
+<p><strong>🕒</strong><br>Lun–Sab 8:00–19:30<br>Domenica chiuso</p>
+</div>
+<div class="contatti-mappa">
+<iframe src="https://www.google.com/maps?q=Via+Macallè+7+Fossano&output=embed"></iframe>
+</div>
+</div>
 </div>
 </section>
 
 <footer>
-<p>© 2026 I Sapori di Una Volta - Tutti i diritti riservati | 
-<a href="#">Privacy Policy</a></p>
+<p>© 2026 I Sapori di Una Volta - Tutti i diritti riservati</p>
 </footer>
 
 <script>
-const hamburger=document.getElementById("hamburger");
-const menu=document.getElementById("menu");
+const prodotti=[
+{nome:"Assortimento Completo",prezzo:"€18,50",img:"Assortimento salumi e formaggi.jpg",desc:"Perfetto per aperitivi e taglieri misti piemontesi."},
+{nome:"Bitto DOP",prezzo:"€16,90/kg",img:"Bitto.jfif",desc:"Formaggio stagionato dal gusto intenso."},
+{nome:"Bra DOP",prezzo:"€12,90/kg",img:"BraDop.jpg",desc:"Saporito e versatile, re dei formaggi cuneesi."},
+{nome:"Caprino Fresco",prezzo:"€11,50/kg",img:"Caprino.jpg",desc:"Morbido e aromatico, ideale con miele."},
+{nome:"Castelmagno DOP",prezzo:"€22,00/kg",img:"Castelmagno.jpg",desc:"Gioiello di Cuneo, gusto unico e persistente."},
+{nome:"Crudo di Cuneo DOP",prezzo:"€24,90/kg",img:"Crudo Cuneo.jpg",desc:"Prosciutto crudo dolce e magro."}
+];
 
-hamburger.addEventListener("click",()=>{
-    menu.classList.toggle("active");
+let pagina=1;
+const griglia=document.getElementById("griglia-prodotti");
+
+function mostraPagina(p){
+griglia.innerHTML="";
+if(p===1){
+prodotti.forEach(prod=>{
+griglia.innerHTML+=`
+<div class="prodotto">
+<img src="${prod.img}" alt="${prod.nome}">
+<h3>${prod.nome}</h3>
+<p>${prod.desc}</p>
+<div class="prezzo">${prod.prezzo}</div>
+</div>`;
+});
+}else{
+griglia.innerHTML=`
+<div class="in-arrivo">
+<h3>Nuovi Prodotti in Arrivo</h3>
+<p>Stiamo selezionando nuove eccellenze gastronomiche piemontesi.</p>
+</div>`;
+}
+}
+
+document.querySelectorAll(".pag-link").forEach(btn=>{
+btn.addEventListener("click",e=>{
+e.preventDefault();
+document.querySelectorAll(".pag-link").forEach(b=>b.classList.remove("attiva"));
+btn.classList.add("attiva");
+mostraPagina(parseInt(btn.dataset.page));
+});
+});
+
+mostraPagina(1);
+
+document.getElementById("hamburger").addEventListener("click",()=>{
+document.getElementById("menu").classList.toggle("active");
 });
 </script>
 
