@@ -6,11 +6,9 @@
     <title>I Sapori di Una Volta - Prodotti Tipici Fossano</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        /* RESET E BASE - ADATTIVO AL 100% */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
      
-        /* CONTAINER DEFINITIVO - SPAZI PERFETTI SU OGNI SCHERMO */
         .container { 
             width: 100%; 
             max-width: 1200px; 
@@ -19,31 +17,85 @@
             padding-right: clamp(1.5rem, 4vw, 3rem);
         }
 
-        /* HEADER padding fisso su desktop */
         @media (min-width: 1200px) {
             .nav-container { padding: 0 3rem; }
         }
 
-        /* Contenitori interni con margini sicuri */
         .hero-content { max-width: clamp(500px, 85vw, 800px); }
         .prodotti { padding: 0 clamp(0.5rem, 2vw, 1rem); }
 
-        /* HEADER UNIVERSALE */
+        /* HEADER */
         .header-neutro { 
             position: fixed; top: 0; width: 100%; background: #ffffff; border-bottom: 1px solid #e9e9e9; z-index: 100; transition: all 0.3s; 
         }
         .navbar { padding: clamp(0.8rem, 2vw, 1rem) 0; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo h1 { font-family: 'Crimson Text', serif; font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 600; color: #8B4513; margin: 0; }
+
+        /* =============================================
+           FIX MOBILE NAVBAR - titolo + menu centrato
+           ============================================= */
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding-left: clamp(1rem, 4vw, 3rem);
+            padding-right: clamp(1rem, 4vw, 3rem);
+        }
+        .logo h1 { 
+            font-family: 'Crimson Text', serif; 
+            font-size: clamp(1.4rem, 4vw, 1.8rem); 
+            font-weight: 600; 
+            color: #8B4513; 
+            margin: 0; 
+        }
         .logo span { color: #D2B48C; }
-        .nav-menu { display: flex; list-style: none; gap: clamp(1rem, 3vw, 2rem); margin: 0; padding: 0; }
+        .nav-menu { 
+            display: flex; 
+            list-style: none; 
+            gap: clamp(1rem, 3vw, 2rem); 
+            margin: 0; 
+            padding: 0; 
+        }
         .nav-menu li { margin: 0; }
-        .nav-menu a { color: #333; text-decoration: none; font-weight: 500; font-size: clamp(0.9rem, 2.5vw, 1rem); transition: color 0.3s; }
+        .nav-menu a { 
+            color: #333; 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: clamp(0.9rem, 2.5vw, 1rem); 
+            transition: color 0.3s; 
+        }
         .nav-menu a:hover { color: #8B4513; }
 
-        /* HERO ADATTIVO */
+        /* MOBILE NAVBAR: logo con margine, menu centrato sotto */
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+            .logo h1 {
+                font-size: 1.35rem;
+                padding-left: 0;
+            }
+            .nav-menu {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.4rem;
+                width: 100%;
+            }
+            .nav-menu a {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* HERO */
         .hero { 
-            margin-top: clamp(70px, 12vw, 80px); padding: clamp(3rem, 10vw, 6rem) 0; 
+            margin-top: clamp(70px, 12vw, 80px); 
+            padding: clamp(3rem, 10vw, 6rem) 0; 
             background: 
                 radial-gradient(circle at 25% 25%, #D2B48C 2px, transparent 2px),
                 radial-gradient(circle at 75% 75%, #A0522D 1px, transparent 1px),
@@ -52,6 +104,14 @@
             background-size: 60px 60px, 80px 80px, cover, 100px 100px;
             position: relative; text-align: center;
         }
+
+        /* Aumenta margine top su mobile perché la navbar diventa più alta */
+        @media (max-width: 600px) {
+            .hero {
+                margin-top: 105px;
+            }
+        }
+
         .hero::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(139,69,19,0.05); border-bottom: 1px solid rgba(210,180,140,0.3);
@@ -70,7 +130,7 @@
             border-left: clamp(4px, 1.5vw, 6px) solid #D2B48C; box-shadow: 0 clamp(5px, 2vw, 5px) clamp(15px, 4vw, 20px) rgba(0,0,0,0.1);
         }
 
-        /* SEZIONE PRODOTTI ADATTIVA */
+        /* PRODOTTI */
         .sezione-titolo { text-align: center; font-family: 'Crimson Text', serif; color: #8B4513; font-size: clamp(2rem, 6vw, 2.5rem); margin-bottom: clamp(1rem, 3vw, 1rem); }
         .sezione-sottotitolo { text-align: center; font-size: clamp(1rem, 3vw, 1.1rem); color: #666; margin-bottom: clamp(2rem, 6vw, 3rem); }
         .prodotti { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 45vw, 320px), 1fr)); gap: clamp(1.2rem, 4vw, 2rem); margin-top: 2rem; }
@@ -81,7 +141,7 @@
         .prodotto p { margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(0.8rem, 2vw, 1rem); color: #666; font-size: clamp(0.85rem, 2.5vw, 0.95rem); }
         .prezzo { font-weight: 700; color: #8B4513; font-size: clamp(1.1rem, 3.5vw, 1.3rem); margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(1.2rem, 4vw, 1.5rem); }
 
-        /* PAGINAZIONE SEMPLICE - SOLO 2 PAGINE */
+        /* PAGINAZIONE */
         .paginazione { 
             text-align: center; 
             margin: clamp(3rem, 8vw, 4rem) 0; 
@@ -108,7 +168,7 @@
         }
         .paginazione span { background: #D2B48C; color: white; font-weight: 700; }
 
-        /* PAGINA 2 - IN ARRIVO */
+        /* IN ARRIVO */
         .in-arrivo {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, #f8f4e9, #fff);
@@ -145,7 +205,7 @@
             50% { transform: scale(1.1); }
         }
 
-        /* CONTATTI COMPLETAMENTE RESPONSIVE */
+        /* CONTATTI */
         #contatti { 
             background: #f8f4e9; 
             padding: clamp(3rem, 8vw, 4rem) 0; 
@@ -205,7 +265,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
         }
 
-        /* FOOTER ADATTIVO */
+        /* FOOTER */
         footer { 
             background: #333; 
             color: white; 
@@ -223,16 +283,11 @@
         footer a { color: #D2B48C; text-decoration: none; font-weight: 500; }
         footer a:hover { color: #fff; text-decoration: underline; }
 
-        /* RESPONSIVE */
+        /* DESKTOP CONTATTI */
         @media (min-width: 1000px) {
             .contatti-grid { grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 3rem); }
             .contatti-info { text-align: left; order: 1; }
             .contatti-mappa { order: 2; margin-bottom: 0; }
-        }
-
-        @media (max-width: 480px) {
-            .nav-menu li { padding: clamp(0.4rem, 2vw, 0.5rem) 0; border-bottom: 1px solid #eee; width: 100%; text-align: center; }
-            .nav-menu li:last-child { border-bottom: none; }
         }
     </style>
 </head>
@@ -262,13 +317,11 @@
     </section>
 
     <!-- PRODOTTI -->
-    <section id="prodotti" class="container">
+    <section id="prodotti" class="container" style="padding-top: clamp(2rem, 6vw, 4rem); padding-bottom: clamp(2rem, 6vw, 4rem);">
         <h2 class="sezione-titolo">Il Nostro Catalogo</h2>
         <p class="sezione-sottotitolo" id="paginazione-testo">Scopri i nostri prodotti <span id="prodotti-range">(1-6 di 12)</span></p>
         
-        <div class="prodotti" id="griglia-prodotti">
-            <!-- I prodotti verranno caricati via JavaScript -->
-        </div>
+        <div class="prodotti" id="griglia-prodotti"></div>
 
         <div class="paginazione" id="paginazione">
             <a href="#" class="pag-link" data-page="1" id="pag-1">1</a>
@@ -305,7 +358,6 @@
     </footer>
 
     <script>
-        // SOLO 6 PRODOTTI PER PAGINA 1
         const prodotti = [
             { nome: "Assortimento Completo", prezzo: "€18,50", img: "Assortimento salumi e formaggi.jpg", desc: "Perfetto per aperitivi e taglieri misti piemontesi." },
             { nome: "Bitto DOP", prezzo: "€16,90/kg", img: "Bitto.jfif", desc: "Formaggio erborinato stagionato in alpeggio." },
@@ -316,21 +368,17 @@
         ];
 
         let paginaCorrente = 1;
-        const totalePagine = 2;
-        const prodottiPerPagina = 6;
 
-        // FUNZIONE PER MOSTRARE PAGINA 1 (PRODOTTI) o PAGINA 2 (IN ARRIVO)
         function mostraPagina(pagina) {
             const griglia = document.getElementById('griglia-prodotti');
             
             if (pagina === 1) {
-                // PAGINA 1 - MOSTRA I 6 PRODOTTI
                 griglia.innerHTML = '';
                 prodotti.forEach(prodotto => {
                     const div = document.createElement('div');
                     div.className = 'prodotto';
                     div.innerHTML = `
-                        <img src="${prodotto.img}" alt="${prodotto.nome}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmNGU5Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzhC4514IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+${encodeURIComponent(prodotto.nome)}+PC90ZXh0Pjwvc3ZnPg=='">
+                        <img src="${prodotto.img}" alt="${prodotto.nome}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmNGU5Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzhCNDUxMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltbWFnaW5lPC90ZXh0Pjwvc3ZnPg=='">
                         <h3>${prodotto.nome}</h3>
                         <p>${prodotto.desc}</p>
                         <div class="prezzo">${prodotto.prezzo}</div>
@@ -339,7 +387,7 @@
                 });
                 document.getElementById('prodotti-range').textContent = '(1-6 di 12)';
             } else {
-                // PAGINA 2 - IN ARRIVO
+                // FIX: renderizza "In arrivo" nella griglia, NON fa scroll a #contatti
                 griglia.innerHTML = `
                     <div class="in-arrivo">
                         <div class="in-arrivo-icon">🚀</div>
@@ -351,31 +399,27 @@
             }
         }
 
-        // FUNZIONE PER AGGIORNARE BOTTONI
         function aggiornaPaginazione() {
-            document.querySelectorAll('.pag-link').forEach(link => {
-                link.classList.remove('attiva');
-            });
+            document.querySelectorAll('.pag-link').forEach(link => link.classList.remove('attiva'));
             document.getElementById(`pag-${paginaCorrente}`).classList.add('attiva');
         }
 
-        // INIZIALIZZAZIONE
         document.addEventListener('DOMContentLoaded', function() {
             mostraPagina(1);
             aggiornaPaginazione();
 
-            // EVENTI PAGINAZIONE
             document.querySelectorAll('.pag-link').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation(); // FIX: blocca propagazione che causava scroll a #contatti
+
                     paginaCorrente = parseInt(this.dataset.page);
-                    
-                    // SCROLL FLUIDO IN ALTO
-                    document.getElementById('prodotti').scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start'
-                    });
-                    
+
+                    // FIX: scroll alla sezione prodotti, non a #contatti
+                    const sezioneProdotti = document.getElementById('prodotti');
+                    const offset = sezioneProdotti.getBoundingClientRect().top + window.scrollY - 120;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+
                     mostraPagina(paginaCorrente);
                     aggiornaPaginazione();
                 });
