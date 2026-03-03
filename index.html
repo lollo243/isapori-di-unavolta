@@ -264,6 +264,22 @@ footer a{color:#D2B48C}
     .hero{padding:70px 20px}
     .hero h2{font-size:2rem}
 }
+    .paginazione button{
+    padding:12px 20px;
+    margin:0 8px;
+    border-radius:30px;
+    background:#f4efe6;
+    color:#8B4513;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+}
+.paginazione button.attiva,
+.paginazione button:hover{
+    background:#8B4513;
+    color:#fff;
+}
 </style>
 </head>
 
@@ -287,11 +303,11 @@ footer a{color:#D2B48C}
 </div>
 </header>
 
-<section id="home" class="hero">
-<h2>Sapori Autentici dal Cuore di Fossano</h2>
-<p>Banco Alimentare Restuccia Simone<br>
-Salumi DOP - Formaggi Piemontesi - Prodotti Tradizionali</p>
-</section>
+<h2 class="hero-title">La Tradizione del Gusto, dal Piemonte</h2>
+<p class="hero-subtitle">
+    Specialità artigianali selezionate con passione<br>
+    per chi ama la vera qualità
+</p>
 
 <section id="prodotti" class="container">
 <h2 class="sezione-titolo">Il Nostro Catalogo</h2>
@@ -300,8 +316,8 @@ Salumi DOP - Formaggi Piemontesi - Prodotti Tradizionali</p>
 <div class="prodotti" id="griglia-prodotti"></div>
 
 <div class="paginazione">
-<a href="#" class="pag-link attiva" data-page="1">1</a>
-<a href="#" class="pag-link" data-page="2">2</a>
+    <button class="pag-link attiva" data-page="1">1</button>
+    <button class="pag-link" data-page="2">2</button>
 </div>
 </section>
 
