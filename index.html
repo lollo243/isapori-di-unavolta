@@ -4,134 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I Sapori di Una Volta - Prodotti Tipici Fossano</title>
-    <!-- Google Fonts per stile professionale -->
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        /* RESET E BASE */
+        /* RESET E BASE - ADATTIVO AL 100% */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
 
-        /* HEADER NEUTRO (senza immagine, sfondo solido) */
+        /* HEADER UNIVERSALE */
         .header-neutro { 
             position: fixed; top: 0; width: 100%; background: #ffffff; border-bottom: 1px solid #e9e9e9; z-index: 100; transition: all 0.3s; 
         }
-        .navbar { padding: 1rem 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
-        .logo h1 { font-family: 'Crimson Text', serif; margin: 0; font-size: 1.8rem; font-weight: 600; color: #8B4513; }
+        .navbar { padding: clamp(0.8rem, 2vw, 1rem) 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo h1 { font-family: 'Crimson Text', serif; font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 600; color: #8B4513; margin: 0; }
         .logo span { color: #D2B48C; }
-        .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; }
-        .nav-menu li { margin-left: 2rem; }
-        .nav-menu a { color: #333; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-menu { display: flex; list-style: none; gap: clamp(1rem, 3vw, 2rem); margin: 0; padding: 0; }
+        .nav-menu li { margin: 0; }
+        .nav-menu a { color: #333; text-decoration: none; font-weight: 500; font-size: clamp(0.9rem, 2.5vw, 1rem); transition: color 0.3s; }
         .nav-menu a:hover { color: #8B4513; }
 
-        /* HERO (spazio ridotto senza immagine di sfondo) */
-       /* HERO CON SFONDO ESTETICO (pattern legno + overlay) */
-.hero { 
-    margin-top: 80px; 
-    padding: 6rem 0; 
-    background: 
-        /* Pattern legno sottile */
-        radial-gradient(circle at 25% 25%, #D2B48C 2px, transparent 2px),
-        radial-gradient(circle at 75% 75%, #A0522D 1px, transparent 1px),
-        /* Gradiente principale */
-        linear-gradient(135deg, #f8f4e9 0%, #e8d9c2 50%, #f0e6d2 100%),
-        /* Texture carta */
-        linear-gradient(90deg, transparent 98%, rgba(0,0,0,0.02) 100%);
-    background-size: 60px 60px, 80px 80px, cover, 100px 100px;
-    position: relative;
-    text-align: center;
-}
+        /* HERO ADATTIVO */
+        .hero { 
+            margin-top: clamp(70px, 12vw, 80px); padding: clamp(3rem, 10vw, 6rem) 0; 
+            background: 
+                radial-gradient(circle at 25% 25%, #D2B48C 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #A0522D 1px, transparent 1px),
+                linear-gradient(135deg, #f8f4e9 0%, #e8d9c2 50%, #f0e6d2 100%),
+                linear-gradient(90deg, transparent 98%, rgba(0,0,0,0.02) 100%);
+            background-size: 60px 60px, 80px 80px, cover, 100px 100px;
+            position: relative; text-align: center;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(139,69,19,0.05); border-bottom: 1px solid rgba(210,180,140,0.3);
+        }
+        .hero-content { max-width: 90vw; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); position: relative; z-index: 2; }
+        .hero-title { 
+            font-family: 'Crimson Text', serif; font-size: clamp(2rem, 8vw, 3.5rem); color: #8B4513; margin-bottom: clamp(0.8rem, 3vw, 1rem); 
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.8); background: rgba(255,255,255,0.95);
+            padding: clamp(1rem, 4vw, 1.2rem) clamp(1.5rem, 5vw, 2.5rem); border-radius: clamp(15px, 4vw, 25px); 
+            display: inline-block; box-shadow: 0 clamp(8px, 3vw, 10px) clamp(20px, 6vw, 30px) rgba(0,0,0,0.15);
+        }
+        .hero-subtitle { 
+            font-size: clamp(1rem, 4vw, 1.3rem); color: #5a4a3a; margin: clamp(0.5rem, 2vw, 1rem) 0 clamp(1.5rem, 4vw, 2rem); 
+            font-weight: 400; background: rgba(248,244,233,0.95); 
+            padding: clamp(1.2rem, 4vw, 1.5rem) clamp(1.5rem, 5vw, 2.5rem); border-radius: clamp(12px, 3vw, 20px);
+            border-left: clamp(4px, 1.5vw, 6px) solid #D2B48C; box-shadow: 0 clamp(5px, 2vw, 5px) clamp(15px, 4vw, 20px) rgba(0,0,0,0.1);
+        }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(139,69,19,0.05);
-    border-bottom: 1px solid rgba(210,180,140,0.3);
-}
-
-.hero-content { 
-    max-width: 800px; margin: 0 auto; padding: 0 2rem; 
-    position: relative; z-index: 2;
-}
-
-.hero-title { 
-    font-family: 'Crimson Text', serif; 
-    font-size: 3.5rem; 
-    color: #8B4513; 
-    margin-bottom: 1rem; 
-    text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
-    background: rgba(255,255,255,0.9);
-    padding: 1rem 2rem;
-    border-radius: 20px;
-    display: inline-block;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.hero-subtitle { 
-    font-size: 1.3rem; 
-    color: #5a4a3a; 
-    margin-top:1rem;
-    margin-bottom: 2rem; 
-    text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
-    font-weight: 400;
-    background: rgba(248,244,233,0.9);
-    padding: 1.5rem 2rem;
-    border-radius: 15px;
-    border-left: 5px solid #D2B48C;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero { padding: 4rem 0; }
-    .hero-title { font-size: 2.5rem; padding: 0.8rem 1.5rem; }
-    .hero-subtitle { font-size: 1.1rem; padding: 1rem 1.5rem; }
-}
-
-
-        /* SEZIONE PRODOTTI */
-        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-        .prodotti { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        /* SEZIONE PRODOTTI ADATTIVA */
+        .sezione-titolo { text-align: center; font-family: 'Crimson Text', serif; color: #8B4513; font-size: clamp(2rem, 6vw, 2.5rem); margin-bottom: clamp(1rem, 3vw, 1rem); }
+        .sezione-sottotitolo { text-align: center; font-size: clamp(1rem, 3vw, 1.1rem); color: #666; margin-bottom: clamp(2rem, 6vw, 3rem); }
+        .prodotti { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 45vw, 320px), 1fr)); gap: clamp(1.2rem, 4vw, 2rem); margin-top: 2rem; }
         .prodotto { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .prodotto:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-        .prodotto img { width: 100%; height: 220px; object-fit: cover; }
-        .prodotto h3 { margin: 1.2rem; font-family: 'Crimson Text', serif; font-size: 1.3rem; color: #8B4513; }
-        .prodotto p { margin: 0 1.2rem 1rem; color: #666; font-size: 0.95rem; }
-        .prezzo { font-weight: 700; color: #8B4513; font-size: 1.3rem; margin: 0 1.2rem 1.5rem; }
+        .prodotto:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .prodotto img { width: 100%; height: clamp(160px, 35vw, 220px); object-fit: cover; }
+        .prodotto h3 { margin: clamp(0.8rem, 3vw, 1.2rem); font-family: 'Crimson Text', serif; font-size: clamp(1.1rem, 3.5vw, 1.3rem); color: #8B4513; }
+        .prodotto p { margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(0.8rem, 2vw, 1rem); color: #666; font-size: clamp(0.85rem, 2.5vw, 0.95rem); }
+        .prezzo { font-weight: 700; color: #8B4513; font-size: clamp(1.1rem, 3.5vw, 1.3rem); margin: 0 clamp(0.8rem, 3vw, 1.2rem) clamp(1.2rem, 4vw, 1.5rem); }
 
-        /* PAGINAZIONE */
-        .paginazione { text-align: center; margin: 4rem 0; }
-        .paginazione a, .paginazione span { background: #f8f4e9; color: #8B4513; padding: 0.8rem 1.2rem; margin: 0 0.3rem; text-decoration: none; border-radius: 25px; font-weight: 500; transition: all 0.3s; }
+        /* PAGINAZIONE ADATTIVA */
+        .paginazione { text-align: center; margin: clamp(3rem, 8vw, 4rem) 0; }
+        .paginazione a, .paginazione span { 
+            background: #f8f4e9; color: #8B4513; padding: clamp(0.6rem, 2.5vw, 0.8rem) clamp(1rem, 3vw, 1.2rem); 
+            margin: 0 clamp(0.2rem, 1vw, 0.3rem); text-decoration: none; border-radius: 25px; font-weight: 500; 
+            transition: all 0.3s; font-size: clamp(0.85rem, 2.5vw, 1rem); display: inline-block; min-width: clamp(3rem, 8vw, 4rem);
+        }
         .paginazione a:hover { background: #8B4513; color: white; transform: translateY(-2px); }
 
-        /* CONTATTI AGGIORNATI CON MAPPA VERA */
-        #contatti { background: #f8f4e9; padding: 4rem 0; text-align: center; }
-        #contatti h2 { font-family: 'Crimson Text', serif; color: #8B4513; margin-bottom: 2rem; font-size: 2.5rem; }
-        .contatti-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 0 2rem; align-items: start; }
-        .contatti-info { text-align: left; }
-        .contatti-info p { font-size: 1.2rem; margin-bottom: 1.5rem; }
-        .contatti-info a { color: #8B4513; text-decoration: none; font-weight: 600; }
+        /* CONTATTI ADATTIVI */
+        #contatti { background: #f8f4e9; padding: clamp(3rem, 8vw, 4rem) 0; text-align: center; }
+        #contatti h2 { font-family: 'Crimson Text', serif; color: #8B4513; margin-bottom: clamp(1.5rem, 4vw, 2rem); font-size: clamp(1.8rem, 6vw, 2.5rem); }
+        .contatti-grid { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 6vw, 3rem); align-items: start; }
+        .contatti-info { text-align: center; order: 2; }
+        .contatti-info p { font-size: clamp(1rem, 3vw, 1.2rem); margin-bottom: clamp(1rem, 3vw, 1.5rem); line-height: 1.5; }
+        .contatti-info a { color: #8B4513; text-decoration: none; font-weight: 600; display: block; margin-top: 0.5rem; }
         .contatti-info a:hover { text-decoration: underline; }
-        .contatti-mappa iframe { width: 100%; height: 350px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .contatti-mappa { order: 1; }
+        .contatti-mappa iframe { width: 100%; height: clamp(280px, 50vw, 350px); border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
 
-        /* FOOTER */
-        footer { background: #333; color: white; text-align: center; padding: 2rem; font-family: 'Poppins', sans-serif; }
+        /* FOOTER ADATTIVO */
+        footer { background: #333; color: white; text-align: center; padding: clamp(1.5rem, 5vw, 2rem) clamp(1rem, 4vw, 2rem); font-size: clamp(0.85rem, 2.5vw, 0.9rem); }
         footer a { color: #D2B48C; text-decoration: none; }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 1rem; padding: 1rem; }
-            .nav-menu { flex-direction: column; gap: 1rem; }
-            .hero-title { font-size: 2.5rem; }
-            .contatti-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-            .contatti-info { text-align: center; }
-            .container { padding: 2rem 1rem; }
-            .prodotti { grid-template-columns: 1fr; gap: 1.5rem; }
+        /* RESPONSIVE FLUIDO - FUNZIONA SU OGNI SCHERMO */
+        @media (min-width: 1000px) {
+            .contatti-grid { grid-template-columns: 1fr 1.1fr; }
+            .contatti-info { text-align: left; order: 1; }
+            .contatti-mappa { order: 2; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu li { padding: clamp(0.4rem, 2vw, 0.5rem) 0; border-bottom: 1px solid #eee; }
+            .nav-menu li:last-child { border-bottom: none; }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER NEUTRO (senza immagine di sfondo) -->
+    <!-- HEADER -->
     <header class="header-neutro">
         <nav class="navbar">
             <div class="nav-container">
@@ -147,7 +118,7 @@
         </nav>
     </header>
 
-    <!-- HERO SEMPLICE (senza immagine pesante) -->
+    <!-- HERO -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h2 class="hero-title">Sapori Autentici dal Cuore di Fossano</h2>
@@ -157,8 +128,8 @@
 
     <!-- PRODOTTI -->
     <section id="prodotti" class="container">
-        <h2 style="text-align: center; font-family: 'Crimson Text', serif; color: #8B4513; font-size: 2.5rem; margin-bottom: 1rem;">Il Nostro Catalogo</h2>
-        <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">Scopri i nostri formaggi e salumi locali (1-12 di 20)</p>
+        <h2 class="sezione-titolo">Il Nostro Catalogo</h2>
+        <p class="sezione-sottotitolo">Scopri i nostri formaggi e salumi locali (1-12 di 20)</p>
         
         <div class="prodotti">
             <div class="prodotto">
@@ -167,46 +138,38 @@
                 <p>Perfetto per aperitivi e taglieri misti piemontesi.</p>
                 <div class="prezzo">€18,50</div>
             </div>
-
             <div class="prodotto">
                 <img src="Bitto.jfif" alt="Bitto">
                 <h3>Bitto DOP</h3>
                 <p>Formaggio erborinato stagionato in alpeggio.</p>
                 <div class="prezzo">€16,90/kg</div>
             </div>
-
             <div class="prodotto">
                 <img src="BraDop.jpg" alt="Bra DOP">
                 <h3>Bra DOP</h3>
                 <p>Saporito e versatile, re dei formaggi cuneesi.</p>
                 <div class="prezzo">€12,90/kg</div>
             </div>
-
             <div class="prodotto">
                 <img src="Caprino.jpg" alt="Caprino">
                 <h3>Caprino Fresco</h3>
                 <p>Morbido e aromatico, ideale con miele.</p>
                 <div class="prezzo">€11,50/kg</div>
             </div>
-
             <div class="prodotto">
                 <img src="Castelmagno.jpg" alt="Castelmagno">
                 <h3>Castelmagno DOP</h3>
                 <p>Gioiello di Cuneo, gusto unico e persistente.</p>
                 <div class="prezzo">€22,00/kg</div>
             </div>
-
             <div class="prodotto">
                 <img src="Crudo Cuneo.jpg" alt="Crudo di Cuneo">
                 <h3>Crudo di Cuneo DOP</h3>
                 <p>Prosciutto crudo dolce e magro.</p>
                 <div class="prezzo">€24,90/kg</div>
             </div>
-
-            <!-- Aggiungi gli altri 6 prodotti qui se li hai -->
         </div>
 
-        <!-- Paginazione -->
         <div class="paginazione">
             <a href="#">&laquo; Precedente</a>
             <span>1</span>
@@ -216,7 +179,7 @@
         </div>
     </section>
 
-    <!-- CONTATTI CON MAPPA VERA DI FOSSANO (Via Macallè 7) -->
+    <!-- CONTATTI -->
     <section id="contatti">
         <h2>Contattaci</h2>
         <div class="contatti-grid">
@@ -227,16 +190,15 @@
                 <p><strong>📍 Indirizzo:</strong><br>Via Macallè 7<br>12045 Fossano (CN) - Piemonte</p>
                 <p><strong>🕒 Orari:</strong><br>Lun–Sab 8:00–19:30<br>Domenica chiuso</p>
             </div>
-          <div class="contatti-mappa">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2821.408483982345!2d7.724856315704!3d44.554912979159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478a2f8e8e8e8e8e%3A0x9c8f7e6d5c4b3a29!2sVia%20Macall%C3%A8%207%2C%2012045%20Fossano%20CN%2C%20Italia!5e0!3m2!1sit!2sit!4v1730582400000!5m2!1sit!2sit" 
-        width="100%" height="350" style="border:0; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+            <div class="contatti-mappa">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2821.408483982345!2d7.724856315704!3d44.554912979159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478a2f8e8e8e8e8e%3A0x9c8f7e6d5c4b3a29!2sVia%20Macall%C3%A8%207%2C%2012045%20Fossano%20CN%2C%20Italia!5e0!3m2!1sit!2sit!4v1730582400000!5m2!1sit!2sit" 
+                    width="100%" height="350" style="border:0;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container">
             <p>&copy; 2026 I Sapori di Una Volta - Tutti i diritti riservati | <a href="#privacy">Privacy Policy</a> | P.IVA: [inserisci tua]</p>
