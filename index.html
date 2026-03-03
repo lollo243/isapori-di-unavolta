@@ -4,149 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I Sapori di Una Volta - Prodotti Tipici Fossano</title>
+    <!-- Google Fonts per stile professionale -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #f9f9f9; color: #333; }
-        header { background: #8B4513; color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 10; }
-        nav { text-align: center; } nav a { color: white; margin: 0 1rem; text-decoration: none; }
-        .hero { background: #D2B48C url('https://via.placeholder.com/1920x600?text=Sapori+Autentici') center/cover; padding: 4rem 1rem; text-align: center; color: white; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-        .prodotti { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .prodotto { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .prodotto:hover { transform: translateY(-5px); }
-        .prodotto img { width: 100%; height: 200px; object-fit: cover; }
-        .prodotto h3 { margin: 1rem; font-size: 1.2rem; }
-        .prodotto p { margin: 0 1rem 1rem; color: #666; }
-        .prezzo { font-weight: bold; color: #8B4513; font-size: 1.1rem; margin: 0 1rem 1rem; }
-        .paginazione { text-align: center; margin: 2rem 0; }
-        .paginazione a { background: #8B4513; color: white; padding: 0.5rem 1rem; margin: 0 0.2rem; text-decoration: none; border-radius: 5px; }
-        footer { background: #333; color: white; text-align: center; padding: 1rem; }
-        @media (max-width: 768px) { nav a { display: block; margin: 0.5rem 0; } }
+        /* RESET E BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; }
+
+        /* HEADER MODERNO STICKY */
+        .modern-header { 
+            position: fixed; top: 0; width: 100%; background: rgba(139,69,19,0.95); backdrop-filter: blur(10px); z-index: 100; transition: all 0.3s; 
+        }
+        .navbar { padding: 1rem 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo h1 { font-family: 'Crimson Text', serif; margin: 0; font-size: 1.8rem; font-weight: 600; color: white; }
+        .logo span { color: #D2B48C; }
+        .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; }
+        .nav-menu li { margin-left: 2rem; }
+        .nav-menu a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-menu a:hover { color: #D2B48C; }
+
+        /* HERO MODERNO */
+        .hero-modern { position: relative; height: 80vh; overflow: hidden; margin-top: 80px; }
+        .hero-bg { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-content { max-width: 700px; color: white; padding: 0 1rem; }
+        .hero-title { font-family: 'Crimson Text', serif; font-size: 4rem; margin: 0 0 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .hero-subtitle { font-size: 1.4rem; margin: 0 0 2rem; font-weight: 300; }
+        .cta-button { background: #8B4513; color: white; padding: 1.2rem 3rem; font-weight: 600; font-size: 1.1rem; border-radius: 50px; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 20px rgba(139,69,19,0.4); display: inline-block; }
+        .cta-button:hover { background: #A0522D; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(139,69,19,0.6); }
+
+        /* SEZIONE PRODOTTI */
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        .prodotti { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .prodotto { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .prodotto:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .prodotto img { width: 100%; height: 220px; object-fit: cover; }
+        .prodotto h3 { margin: 1.2rem; font-family: 'Crimson Text', serif; font-size: 1.3rem; color: #8B4513; }
+        .prodotto p { margin: 0 1.2rem 1rem; color: #666; font-size: 0.95rem; }
+        .prezzo { font-weight: 700; color: #8B4513; font-size: 1.3rem; margin: 0 1.2rem 1.5rem; }
+
+        /* PAGINAZIONE */
+        .paginazione { text-align: center; margin: 4rem 0; }
+        .paginazione a, .paginazione span { background: #f8f4e9; color: #8B4513; padding: 0.8rem 1.2rem; margin: 0 0.3rem; text-decoration: none; border-radius: 25px; font-weight: 500; transition: all 0.3s; }
+        .paginazione a:hover { background: #8B4513; color: white; transform: translateY(-2px); }
+
+        /* CONTATTI */
+        #contatti { background: #f8f4e9; text-align: center; }
+        #contatti h2 { font-family: 'Crimson Text', serif; color: #8B4513; margin-bottom: 2rem; }
+        #contatti p { font-size: 1.2rem; margin-bottom: 2rem; }
+        #contatti iframe { border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+
+        /* FOOTER */
+        footer { background: #333; color: white; text-align: center; padding: 2rem; font-family: 'Poppins', sans-serif; }
+        footer a { color: #D2B48C; text-decoration: none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 1rem; padding: 1rem; }
+            .nav-menu { flex-direction: column; gap: 1rem; }
+            .hero-modern { height: 60vh; margin-top: 120px; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .container { padding: 2rem 1rem; }
+            .prodotti { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#prodotti">Prodotti</a>
-            <a href="#contatti">Contatti</a>
+    <!-- HEADER MODERNO -->
+    <header class="modern-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>I Sapori <span>di Una Volta</span></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#prodotti">Prodotti</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
-    
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>I Sapori di Una Volta</h1>
-            <p>di Restuccia Simone - Banco Alimentare Fossano<br>Salumi, Formaggi e Specialità Piemontesi</p>
+
+    <!-- HERO CON IMMAGINE TUO ASSORTIMENTO -->
+    <section id="home" class="hero-modern">
+        <img src="Assortimento salumi e formaggi.jpg" alt="Sapori Autentici Fossano" class="hero-bg">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h2 class="hero-title">Sapori Autentici dal Cuore di Fossano</h2>
+                <p class="hero-subtitle">Banco Alimentare Restuccia Simone<br>Salumi DOP • Formaggi Piemontesi • Prodotti Tradizionali</p>
+                <a href="#prodotti" class="cta-button">Scopri il Catalogo</a>
+            </div>
         </div>
     </section>
-    
-   <section id="prodotti" class="container">
-    <h2>Catalogo Prodotti</h2>
-    <p>Scopri i nostri formaggi e salumi locali (1-12 di 20)</p>
 
-    <div class="prodotti">
-        <div class="prodotto">
-            <img src="Assortimento salumi e formaggi.jpg" alt="Assortimento salumi e formaggi">
-            <h3>Assortimento salumi e formaggi</h3>
-            <p>Selezione mista ideale per taglieri e aperitivi.</p>
-            <div class="prezzo">€12,50 a vassoio</div>
-        </div>
+    <!-- PRODOTTI CON IMMAGINI ESATTE DEL TUO REPO -->
+    <section id="prodotti" class="container">
+        <h2 style="text-align: center; font-family: 'Crimson Text', serif; color: #8B4513; font-size: 2.5rem; margin-bottom: 1rem;">Il Nostro Catalogo</h2>
+        <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">Scopri i nostri formaggi e salumi locali (1-12 di 20)</p>
+        
+        <div class="prodotti">
+            <div class="prodotto">
+                <img src="Assortimento salumi e formaggi.jpg" alt="Assortimento salumi e formaggi">
+                <h3>Assortimento Completo</h3>
+                <p>Perfetto per aperitivi e taglieri misti piemontesi.</p>
+                <div class="prezzo">€18,50</div>
+            </div>
 
-        <div class="prodotto">
-            <img src="Bitto.jfif" alt="Bitto">
-            <h3>Bitto</h3>
-            <p>Formaggio stagionato dal gusto intenso.</p>
-            <div class="prezzo">€16,90/kg</div>
-        </div>
+            <div class="prodotto">
+                <img src="Bitto.jfif" alt="Bitto">
+                <h3>Bitto DOP</h3>
+                <p>Formaggio erborinato stagionato in alpeggio.</p>
+                <div class="prezzo">€16,90/kg</div>
+            </div>
 
-        <div class="prodotto">
-            <img src="BraDop.jpg" alt="Bra DOP">
-            <h3>Bra DOP</h3>
-            <p>Classico piemontese, tenero e saporito.</p>
-            <div class="prezzo">€11,90/kg</div>
-        </div>
+            <div class="prodotto">
+                <img src="BraDop.jpg" alt="Bra DOP">
+                <h3>Bra DOP</h3>
+                <p>Saporito e versatile, re dei formaggi cuneesi.</p>
+                <div class="prezzo">€12,90/kg</div>
+            </div>
 
-        <div class="prodotto">
-            <img src="Caprino.jpg" alt="Caprino">
-            <h3>Caprino</h3>
-            <p>Caprino morbido, perfetto da tavola o da spalmare.</p>
-            <div class="prezzo">€13,50/kg</div>
-        </div>
+            <div class="prodotto">
+                <img src="Caprino.jpg" alt="Caprino">
+                <h3>Caprino Fresco</h3>
+                <p>Morbido e aromatico, ideale con miele.</p>
+                <div class="prezzo">€11,50/kg</div>
+            </div>
 
-        <div class="prodotto">
-            <img src="Castelmagno.jpg" alt="Castelmagno">
-            <h3>Castelmagno DOP</h3>
-            <p>Formaggio di montagna, stagionato in grotta.</p>
-            <div class="prezzo">€19,90/kg</div>
-        </div>
+            <div class="prodotto">
+                <img src="Castelmagno.jpg" alt="Castelmagno">
+                <h3>Castelmagno DOP</h3>
+                <p>Gioiello di Cuneo, gusto unico e persistente.</p>
+                <div class="prezzo">€22,00/kg</div>
+            </div>
 
-        <div class="prodotto">
-            <img src="Crudo Cuneo.jpg" alt="Crudo di Cuneo">
-            <h3>Crudo di Cuneo</h3>
-            <p>Prosciutto crudo tipico della provincia di Cuneo.</p>
-            <div class="prezzo">€21,90/kg</div>
-        </div>
+            <div class="prodotto">
+                <img src="Crudo Cuneo.jpg" alt="Crudo di Cuneo">
+                <h3>Crudo di Cuneo DOP</h3>
+                <p>Prosciutto crudo dolce e magro.</p>
+                <div class="prezzo">€24,90/kg</div>
+            </div>
 
-        <div class="prodotto">
-            <img src="Fontina.jpg" alt="Fontina">
-            <h3>Fontina</h3>
-            <p>Formaggio valdostano dal cuore morbido.</p>
-            <div class="prezzo">€14,50/kg</div>
-        </div>
-
-        <div class="prodotto">
-            <img src="Formaggi Piemontesi Assortiti.jpg" alt="Formaggi piemontesi assortiti">
-            <h3>Formaggi piemontesi assortiti</h3>
-            <p>Selezione di DOP piemontesi per ogni gusto.</p>
-            <div class="prezzo">€15,90/kg</div>
-        </div>
-
-        <div class="prodotto">
-            <img src="Pancetta.webp" alt="Pancetta">
-            <h3>Pancetta</h3>
-            <p>Pancetta arrotolata, ideale per cucina e panini.</p>
-            <div class="prezzo">€9,90/kg</div>
-        </div>
-
-        <div class="prodotto">
-            <img src="Prosciutto cotto.jfif" alt="Prosciutto cotto">
-            <h3>Prosciutto cotto</h3>
-            <p>Cotto scelto, alta qualità per tutti i giorni.</p>
-            <div class="prezzo">€12,90/kg</div>
-        </div>
-
-        <div class="prodotto">
-            <img src="Salame Piemontese.jfif" alt="Salame piemontese">
-            <h3>Salame Piemontese</h3>
-            <p>Salame tradizionale, macinatura fine e gusto deciso.</p>
-            <div class="prezzo">€8,90/kg</div>
-        </div>
-
-        <div class="prodotto">
-            <img src="Tagliere Salumi.jfif" alt="Tagliere di salumi">
-            <h3>Tagliere di salumi</h3>
-            <p>Mix di specialità del banco, pronto da servire.</p>
-            <div class="prezzo">€18,00 a tagliere</div>
-        </div>
-    </div>
-
-    <div class="paginazione">
-        <a href="#">&laquo; Prec.</a>
-        <span>1</span>
-        <a href="#">2</a>
-        <a href="#">Succ. &raquo;</a>
-    </div>
-</section>
-
-    
-    <section id="contatti" class="container">
-        <h2>Contatti</h2>
-        <p>Via Macallè 7, 12045 Fossano (CN) | 346 680 6394 | restucciasimone@pec.it</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2829.12!2d7.72123!3d44.55234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cd597c2f4073b5%3A0xea30c234243b01d2!2sVia+Macall%C3%A8+7+Fossano!5e0!3m2!1sit!2sit!4v1700000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </section>
-    
-    <footer>
-        <p>&copy; 2026 I Sapori di Una Volta di Restuccia Simone. | <a href="#prodotti">Catalogo</a></p>
-    </footer>
-</body>
-</html>
-
+            <div class="
