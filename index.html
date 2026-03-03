@@ -25,10 +25,67 @@
         .nav-menu a:hover { color: #8B4513; }
 
         /* HERO (spazio ridotto senza immagine di sfondo) */
-        .hero { margin-top: 80px; padding: 4rem 0; background: linear-gradient(135deg, #f8f4e9 0%, #f9f9f9 100%); text-align: center; }
-        .hero-content { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
-        .hero-title { font-family: 'Crimson Text', serif; font-size: 3.5rem; color: #8B4513; margin-bottom: 1rem; }
-        .hero-subtitle { font-size: 1.3rem; color: #666; margin-bottom: 2rem; }
+       /* HERO CON SFONDO ESTETICO (pattern legno + overlay) */
+.hero { 
+    margin-top: 80px; 
+    padding: 6rem 0; 
+    background: 
+        /* Pattern legno sottile */
+        radial-gradient(circle at 25% 25%, #D2B48C 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, #A0522D 1px, transparent 1px),
+        /* Gradiente principale */
+        linear-gradient(135deg, #f8f4e9 0%, #e8d9c2 50%, #f0e6d2 100%),
+        /* Texture carta */
+        linear-gradient(90deg, transparent 98%, rgba(0,0,0,0.02) 100%);
+    background-size: 60px 60px, 80px 80px, cover, 100px 100px;
+    position: relative;
+    text-align: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(139,69,19,0.05);
+    border-bottom: 1px solid rgba(210,180,140,0.3);
+}
+
+.hero-content { 
+    max-width: 800px; margin: 0 auto; padding: 0 2rem; 
+    position: relative; z-index: 2;
+}
+
+.hero-title { 
+    font-family: 'Crimson Text', serif; 
+    font-size: 3.5rem; 
+    color: #8B4513; 
+    margin-bottom: 1rem; 
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.9);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.hero-subtitle { 
+    font-size: 1.3rem; 
+    color: #5a4a3a; 
+    margin-bottom: 2rem; 
+    font-weight: 400;
+    background: rgba(248,244,233,0.9);
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    border-left: 5px solid #D2B48C;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero { padding: 4rem 0; }
+    .hero-title { font-size: 2.5rem; padding: 0.8rem 1.5rem; }
+    .hero-subtitle { font-size: 1.1rem; padding: 1rem 1.5rem; }
+}
+
 
         /* SEZIONE PRODOTTI */
         .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
@@ -92,7 +149,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h2 class="hero-title">Sapori Autentici dal Cuore di Fossano</h2>
-            <p class="hero-subtitle">Banco Alimentare Restuccia Simone<br>Salumi DOP • Formaggi Piemontesi • Prodotti Tradizionali</p>
+            <p class="hero-subtitle">Banco Alimentare Di Restuccia Simone<br>Salumi DOP - Formaggi Piemontesi - Prodotti Tradizionali</p>
         </div>
     </section>
 
