@@ -9,7 +9,24 @@
         /* RESET E BASE - ADATTIVO AL 100% */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+     /* CONTAINER DEFINITIVO - SPAZI PERFETTI SU OGNI SCHERMO */
+.container { 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding-left: clamp(1.5rem, 4vw, 3rem);
+    padding-right: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* HEADER padding fisso su desktop */
+@media (min-width: 1200px) {
+    .nav-container { padding: 0 3rem; }
+}
+
+/* Contenitori interni con margini sicuri */
+.hero-content { max-width: clamp(500px, 85vw, 800px); }
+.prodotti { padding: 0 clamp(0.5rem, 2vw, 1rem); }
+
 
         /* HEADER UNIVERSALE */
         .header-neutro { 
